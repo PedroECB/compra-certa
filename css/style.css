@@ -1,0 +1,227 @@
+/* Imports */
+
+@import url('https://fonts.googleapis.com/css2?family=Kalam:wght@300;400&family=Orbitron:wght@400;500;600;700;800&display=swap');
+.font-orbitron {
+    font-family: 'Orbitron', sans-serif;
+}
+
+.font-kalam {
+    font-family: 'Kalam', cursive;
+}
+
+/* ---------------------------------------------------------- */
+
+:root {
+    --primary-blue: #0a2463;
+}
+
+.primary-blue-text {
+    color: var(--primary-blue) !important;
+}
+
+.btn-primary-blue {
+    background-color: var(--primary-blue);
+    color: white;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.btn-buy{
+    border-radius: 0px 0px 5px 5px;
+}
+
+.btn-primary-blue:hover {
+    color: white;
+    background-color: #3a5799;
+}
+
+body {
+    background-color: #f8f9fa;
+}
+
+/* Home */
+
+.navbar {
+    box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.2);
+}
+
+.logo {
+    max-width: 180px;
+}
+
+.nav-item {
+    font-size: 1.2em;
+}
+
+.nav-item.active .nav-link {
+    color: var(--primary-blue) !important;
+}
+
+#carouselExampleCaptions {
+    margin-top: 100px;
+}
+
+.carousel-indicators li {
+    background-color: var(--primary-blue);
+    height: 7px;
+}
+
+/* OFERTAS DO DIA */
+
+.promo-box {
+    margin: 20px 0px;
+}
+
+.cards-promo {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.cards-promo .card {
+    width: 200px;
+    margin: 10px;
+    position: relative;
+}
+
+.card .product-name {
+    font-size: 1.2em;
+    font-family: 'Kalam';
+    font-weight: bold;
+    color: var(--primary-blue);
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+
+.card img {
+    width: 100%;
+    max-width: 270px;
+}
+
+.price {
+    color: rgb(35, 27, 87);
+    font-weight: bold;
+}
+
+.line-trough-price {
+    text-decoration: line-through;
+    font-size: 1.2em;
+    color: red;
+}
+
+.green-price {
+    color: #149459;
+    font-size: 1.5em;
+}
+
+.box-text {
+    max-width: 320px;
+    border-bottom: 5px solid var(--primary-blue);
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* PRODUTOS */
+
+.products{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.products .card{
+    width: 200px;
+    height: 100%;
+    margin: 10px;
+    position: relative;
+    /* box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.2); */
+}
+
+
+/* FOOTER */
+
+footer{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    background-color: white;
+    box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.2);
+}
+
+footer img{
+    margin: 0 auto;
+    max-width: 140px;
+}
+
+footer span{
+    font-weight: bold;
+    font-family: 'Kalam';
+    font-size: 0.8em;
+}
+
+/* Media Queries */
+
+@media(max-width: 768px) {
+    #carouselExampleCaptions {
+        margin-top: 150px;
+    }
+}
+
+
+
+/* Ribbon Promo */
+.ribbon-wrapper-green {
+    width: 85px;
+    height: 88px;
+    overflow: hidden;
+    position: absolute;
+    top: -3px;
+    right: -3px;
+}
+
+.ribbon-green {
+    font: bold 13px Sans-Serif;
+    color: #333;
+    text-align: center;
+    text-shadow: rgba(255, 255, 255, 0.5) 0px 1px 0px;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    position: relative;
+    padding: 7px 0;
+    left: -5px;
+    top: 15px;
+    width: 120px;
+    background-color: var(--primary-blue);
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#0a2463), to(#274b9e));
+    background-image: -webkit-linear-gradient(top, #0a2463, #274b9e);
+    background-image: -moz-linear-gradient(top, #0a2463, #274b9e);
+    background-image: -ms-linear-gradient(top, #0a2463, #274b9e);
+    background-image: -o-linear-gradient(top, #0a2463, #274b9e);
+    color: white;
+    -webkit-box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
+}
+
+.ribbon-green:before, .ribbon-green:after {
+    content: "";
+    border-top: 3px solid #6e8900;
+    border-left: 3px solid transparent;
+    border-right: 3px solid transparent;
+    position: absolute;
+    bottom: -3px;
+}
+
+.ribbon-green:before {
+    left: 0;
+}
+
+.ribbon-green:after {
+    right: 0;
+}
