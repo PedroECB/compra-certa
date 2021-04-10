@@ -15,6 +15,9 @@
     --primary-blue: #0a2463;
 }
 
+.bg-dark-blue{
+    background-color: var(--primary-blue) !important;
+}
 .primary-blue-text {
     color: var(--primary-blue) !important;
 }
@@ -36,7 +39,7 @@
 }
 
 body {
-    background-color: #f8f9fa;
+    background-color: #f3f3f3;
 }
 
 /* Home */

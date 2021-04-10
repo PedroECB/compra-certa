@@ -45,8 +45,7 @@
       <div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
         <ul class="navbar-nav nav">
           <li class="nav-item">
-            <a class="nav-link" href="./credit-card-form.html"><i class="fa fa-shopping-cart"
-                aria-hidden="true"></i></a>
+            <a class="nav-link" href="./credit-card-form.html"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
@@ -63,51 +62,18 @@
     </div>
   </nav>
 
-  <div class="container">
-    <div class="card-product-container">
-      <div class="row">
-        <div class="col-md-6">
-          <img src="./img/produtos/feature-1.jpg" class="product-img" alt="">
-        </div>
-        <div class="col-md-6" >
-          <div class="card-detail">
-            <h4 class="font-kalam primary-blue-text product-name font-weight-bolder">Carne Bovina Kg</h5>
-              <hr>
-              <h5 class="font-kalam"><span class="green-price font-weight-bolder">R$ 35,99</span></h5>
-              <div class="">
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item font-kalam">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum feugiat magna mi, vitae fringilla justo vulputate non.</li>
-                  <li class="list-group-item font-kalam" style="font-size: 1em;"><b>Categoria:</b> Açougue</li>
-                  <li class="list-group-item font-kalam font-weight-bolder" style="font-size: 1em;"><b>Total:</b> <span class="green-price" style="font-size: 1.2em;">R$ 35,99</span></li>
+  <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel" style="display: none;"></div>
 
-                </ul>
-              </div>
-              <span class="text-qnt font-kalam">Quantidade</span> 
-              <div class="qnt-box">
-                <button class="btn btn-sm minus" onclick="decrementProduct()"><i class="fa fa-minus" aria-hidden="true"></i></button>
-                <input type="text" min="1" max="10" id="inputQnt" value="1" class="form-control form-control-sm text-center" readonly>
-                <button class="btn btn-sm plus" onclick="incrementProduct()"><i class="fa fa-plus"  aria-hidden="true"></i></button>
-              </div>
-              <div style="display: flex; justify-content: space-between;">
-                <button class="btn btn-primary-blue" style="font-size: 0.9em;">
-                  <i class="fa fa-cart-plus" aria-hidden="true"></i>
-                  Adicionar ao carrinho
-                </button>
-                <button class="btn btn-sm btn-default font-kalam" onclick="window.history.back()">Voltar</button>
-              </div>
-          </div>
-        </div>
+      <div class="wrapper">
+        <div id="product" class="product"></div>
       </div>
-    </div>
   </div>
 
 
-
-  <footer class="mt-2">
-    <img src="./img/CompraCertaLogoMini.png" alt="">
-    <span class="d-block">Mercadinho CompraCerta - Todos os direitos reservados <i class="fa fa-copyright"
-        aria-hidden="true"></i></span>
-  </footer>
+<footer class="mt-2">
+  <img src="./img/CompraCertaLogoMini.png" alt="">
+  <span class="d-block">Mercadinho CompraCerta - Todos os direitos reservados <i class="fa fa-copyright" aria-hidden="true"></i></span>
+</footer>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
     crossorigin="anonymous"></script>
@@ -115,28 +81,14 @@
   <script src="https://use.fontawesome.com/884b02690d.js"></script>
 
   <script>
-
-    var inputQntProduct = document.getElementById('inputQnt')
-
-    function incrementProduct(){
-     
-      let qnt = parseInt(inputQntProduct.value)
-      qnt += 1
-
-      if(qnt <= 10)
-        inputQntProduct.value = qnt;
-      
+    function getDataFromUrl() {
+      url = window.location.href;
+      data = url.split('data=').pop();
+      const [image, name, price] = data.split('&');
+      document.getElementById('product').innerHTML = "<div class='card'> <img src="+image+"> <div><h4 class='text-center product-name'>"+name+" <span class='d-block text-center price'><span class='green-price font-kalam'> R$ "+price+"</span></span></h4></div> <button onclick=''  class='btn btn- btn-primary-blue btn-buy'><i class='fa fa-shopping-cart'></i>Comprar</button></div>"
     }
 
-
-    function decrementProduct(){
-      let qnt = parseInt(inputQntProduct.value)
-      qnt -= 1
-
-      if(qnt > 0)
-        inputQntProduct.value = qnt;
-    }
-
+    getDataFromUrl()
   </script>
   <!-- Option 2: Separate Popper and Bootstrap JS -->
 
