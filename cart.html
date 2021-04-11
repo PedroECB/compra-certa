@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS / + -->
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/cart.css">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="./img/favicon.ico" type="image/x-icon">
+    <title>Mercadinho Compra Certa - Home</title>
+</head>
+
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light font-kalam font-weight-bold">
+        <a class="navbar-brand" href="#">
+            <img src="./img/CompraCertaLogoMini.png" class="logo" alt="">
+        </a>
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Navcenter -->
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+                <ul class="navbar-nav nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="./index.html">Página inicial</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Produtos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Fale conosco</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- NavRight -->
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
+                <ul class="navbar-nav nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="./cart.html"><i class="fa fa-shopping-cart"
+                                aria-hidden="true"></i></a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-user-circle" aria-hidden="true"></i>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="./login.html">Entrar</a>
+                            <a class="dropdown-item" href="./cadastre-se.html">Cadastre-se</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="cart-product-container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="box-cart">
+                        <div class="d-flex justify-content-between px-2 font-kalam">
+                            <h4><i class="fa fa-shopping-cart" aria-hidden="true"></i> Carrinho</h4>
+                            <h5>2 Itens</h5>
+                        </div>
+                        <hr>
+                        <table class="table text-center font-kalam table-cart table-striped">
+                            <thead style="color: gray;">
+                                <tr>
+                                    <th>Produto</th>
+                                    <th>Quantidade</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="box-product">
+                                            <img src="./img/produtos/feature-1.jpg" alt="">
+                                            <div>
+                                                <span class="font-weight-bold">Carne Bovina Kg</span>
+                                                <span style="color: gray;">Bebidas</span>
+                                                <span class="green-price font-weight-bold" style="font-size: 1.2em;">R$
+                                                    35,99</span>
+                                                <a href="#" style="font-size: small; color: red;">Remover</a>
+
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="font-weight-bold">
+                                        <div class="qnt-box">
+                                            <button class="btn btn-sm minus" onclick="decrementProduct(this)"><i
+                                                    class="fa fa-minus" aria-hidden="true"></i></button>
+                                            <input type="text" min="1" max="10" id="inputQnt" value="1"
+                                                class="form-control form-control-sm text-center" readonly>
+                                            <button class="btn btn-sm plus" onclick="incrementProduct(this)"><i
+                                                    class="fa fa-plus" aria-hidden="true"></i></button>
+                                        </div>
+                                    </td>
+                                    <td class="green-price font-weight-bold" style="font-size: 1.3em;">R$ 35,99</td>
+
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="box-product">
+                                            <img src="./img/produtos/cachaca-51.jpg" alt="">
+                                            <div>
+                                                <span class="font-weight-bold">Cachaça 51 </span>
+                                                <span style="color: gray;">Bebidas</span>
+                                                <span class="green-price font-weight-bold" style="font-size: 1.2em;">R$
+                                                    8,99</span>
+                                                <a href="#" style="font-size: small; color: red;">Remover</a>
+
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="font-weight-bold">
+                                        <div class="qnt-box">
+                                            <button class="btn btn-sm minus" onclick="decrementProduct(this)"><i
+                                                    class="fa fa-minus" aria-hidden="true"></i></button>
+                                            <input type="text" min="1" max="10" id="inputQnt" value="1"
+                                                class="form-control form-control-sm text-center" readonly>
+                                            <button class="btn btn-sm plus" onclick="incrementProduct(this)"><i
+                                                    class="fa fa-plus" aria-hidden="true"></i></button>
+                                        </div>
+                                    </td>
+                                    <td class="green-price font-weight-bold" style="font-size: 1.3em;">R$ 8,99</td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                        <a href="./products.html" class="btn btn-default font-weight-bold primary-blue-text font-kalam" >
+                            <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                            Continuar comprando
+                        </a>
+
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="cart-detail">
+                        <div class="d-flex justify-content-center px-2 font-kalam">
+                            <h4 class="font-weight-bold">Resumo de compra</h4>
+                        </div>
+                        <hr>
+                        <div class="px-4 font-kalam">
+                            <div class="d-flex justify-content-between">
+                                <span style="font-size: 1.3em;">Itens</span>
+                                <span class="font-weight-bold" style="font-size: 1.3em;">
+                                    R$ 44,98
+                                </span>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <span style="font-size: 1.3em;">Frete</span>
+                                <span class="font-weight-bold green-price" style="font-size: 1.3em;">
+                                    Grátis
+                                </span>
+                            </div>
+                            <div class="mt-3">
+                                <input type="text" class="form-control" placeholder="CUPOM DE DESCONTO">
+                                <button class="btn btn-primary-blue btn-block mt-2" style="font-size: 1em;">
+                                    APLICAR
+                                </button>
+                            </div>
+                            <div class="d-flex justify-content-between mt-4">
+                                <span style="font-size: 1.3em;">Total </span>
+                                <span class="font-weight-bold" style="font-size: 1.6em;">
+                                    R$ 44,98
+                                </span>
+                            </div>
+                            <div class="d-flex justify-content-between mt-4">
+                                <button class="btn btn-block font-weight-bold text-white" style="height: 50px; font-size: 0.9em; background-color: #149459;">
+                                    <i class="fa fa-credit-card-alt" aria-hidden="true"></i>
+                                    AVANÇAR PARA PAGAMENTO
+                                    <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <footer class="mt-2">
+        <img src="./img/CompraCertaLogoMini.png" alt="">
+        <span class="d-block">Mercadinho CompraCerta - Todos os direitos reservados <i class="fa fa-copyright"
+                aria-hidden="true"></i></span>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="./js/bootstrap.bundle.min.js"></script>
+    <script src="https://use.fontawesome.com/884b02690d.js"></script>
+
+    <script>
+
+
+        function incrementProduct(input) {
+            console.log(input.previousElementSibling)
+            let qnt = parseInt(input.previousElementSibling.value)
+            qnt += 1
+
+            if (qnt <= 10)
+            input.previousElementSibling.value= qnt;
+
+        }
+
+
+        function decrementProduct(input) {
+            console.log(input.nextElementSibling)
+            let qnt = parseInt(input.nextElementSibling.value)
+            qnt -= 1
+
+            if (qnt > 0)
+            input.nextElementSibling.value = qnt;
+        }
+    </script>
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+
+    <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script> -->
+
+</body>
+
+</html>
