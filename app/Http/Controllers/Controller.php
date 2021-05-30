@@ -10,4 +10,23 @@ use Illuminate\Routing\Controller as BaseController;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    public static function verifySession()
+    {
+        session_start();
+
+        if(!isset($_SESSION["usuario"]))
+        {
+            return false;
+
+        }else{
+            return true;
+        }
+    }
+
+
+    public function verifySessionGerente()
+    {
+
+    }
 }

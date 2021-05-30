@@ -3,13 +3,13 @@
     height: 100vh;
 }
 
-.logo{
+.logo-login{
     margin: 40% auto;
     position: relative;
     max-width: 325px;
 }
 
-.logo img{
+.logo-login img{
     width: 100%;
 }
 

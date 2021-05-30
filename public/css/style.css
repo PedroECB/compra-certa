@@ -132,6 +132,7 @@ body {
     flex-wrap: wrap;
     max-width: 900px;
     margin: 0 auto;
+    padding-bottom: 70px;
 }
 
 .products .card{
@@ -146,6 +147,10 @@ body {
 /* FOOTER */
 
 footer{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;

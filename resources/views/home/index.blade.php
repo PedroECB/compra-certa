@@ -63,7 +63,7 @@
                                  {{ number_format($produto->valor * ((100 - $produto->desconto) / 100), 2, ',', '.') }}
                              </span></span>
                      </div>
-                     <a href="./product.html" class="btn btn-lg btn-primary-blue btn-buy">
+                     <a href="{{ url('/product/'.$produto->id_produto) }}" class="btn btn-lg btn-primary-blue btn-buy">
                          <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                          Comprar
                      </a>
@@ -105,10 +105,12 @@
                          <span class="d-block text-center price"><span class="green-price font-kalam"> R$
                                  {{ number_format($produto->valor, 2, ',', '.') }}</span></span>
                      </div>
-                     <button class="btn btn-lg btn-primary-blue btn-buy">
-                         <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                         Comprar
-                     </button>
+                     <a href="{{ url('/product/'.$produto->id_produto) }}">
+                         <button class="btn btn-lg btn-primary-blue btn-buy w-100">
+                             <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                             Comprar
+                         </button>
+                     </a>
                  </div>
              @endforeach
 

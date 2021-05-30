@@ -11,6 +11,10 @@
     <link rel="stylesheet" href="{{ asset('/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
 
+    {{-- CSS AREA --}}
+
+    @yield('linkcss')
+
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ asset('/img/favicon.ico') }}" type="image/x-icon">
     <link rel="icon" href="{{ asset('/img/favicon.ico') }}" type="image/x-icon">
@@ -46,7 +50,7 @@
             <div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
                 <ul class="navbar-nav nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="./credit-card-form.html"><i class="fa fa-shopping-cart"
+                        <a class="nav-link" href="{{ url('/cart/show') }}"><i class="fa fa-shopping-cart"
                                 aria-hidden="true"></i></a>
                     </li>
                     <li class="nav-item dropdown">
@@ -55,12 +59,35 @@
                             <i class="fa fa-user-circle" aria-hidden="true"></i>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="./login.html">Entrar</a>
-                            <a class="dropdown-item" href="./cadastre-se.html">Cadastre-se</a>
-                            <a class="dropdown-item" href="./client-purchases.html">Minhas compras</a>
-                            <a class="dropdown-item" href="./purchases.html">Compras</a>
+
+                            @if (isset($session['usuario']) && $session['usuario']->nvlAcesso == 1)
+                                <a class="dropdown-item" href="#"><i class="fa fa-child" aria-hidden="true"></i>
+                                    {{ $session['usuario']->nome }}</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="./clients.html">Clientes</a>
+                                <a class="dropdown-item" href="{{url('/gerente/exibirconsultas')}}">Relatório de compras</a>
+                            @endif
+
+                            @if (isset($session['usuario']) && $session['usuario']->nvlAcesso == 3)
+                                <a class="dropdown-item" href="#"><i class="fa fa-child" aria-hidden="true"></i>
+                                    {{ $session['usuario']->nome }}</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="./client-purchases.html">Minhas compras</a>
+                            @endif
+
+                            @if (!isset($session['usuario']))
+                                <a class="dropdown-item" href="{{ url('/login/') }}">Entrar</a>
+                                <a class="dropdown-item" href="{{ url('/register') }}">Cadastre-se</a>
+                            @endif
+
+                            @if (isset($session['usuario']))
+                                <a class="dropdown-item" href="{{ url('/logout') }}"><i class="fa fa-power-off"
+                                        aria-hidden="true"></i> Sair</a>
+                            @endif
+
+                            {{-- <a class="dropdown-item" href="./purchases.html">Compras</a>
                             <a class="dropdown-item" href="./clients.html">Clientes</a>
-                            <a class="dropdown-item" href="./manager-query.html">Relatório de compras</a>
+                            <a class="dropdown-item" href="./manager-query.html">Relatório de compras</a> --}}
                         </div>
                     </li>
                 </ul>
@@ -71,6 +98,7 @@
     {{-- INCLUSÃO DO CONTEÚDO DA PÁGINA --}}
 
     @yield('content')
+
 
 
     <footer class="mt-2">
