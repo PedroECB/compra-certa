@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\GerenteController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -71,6 +72,19 @@ Route::get('/cart/removerProduto/{id}', [CartController::class, 'removerProduto'
 
 Route::get('/gerente/exibirconsultas', [GerenteController::class, 'exibirConsultas']);
 
+
+
+//Clientes
+
+Route::get('/clientes/listar', [ClienteController::class, 'listarClientes']);
+
+Route::get('/clientes/show/{id}', [ClienteController::class, 'show']);
+
+Route::get('/clientes/edit/{id}', [ClienteController::class, 'edit']);
+
+Route::post('/clientes/edit/{id}', [ClienteController::class, 'saveEdit']);
+
+Route::get('/clientes/delete/{id}', [ClienteController::class, 'delete']);
 
 
 

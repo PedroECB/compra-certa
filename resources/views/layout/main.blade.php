@@ -64,7 +64,8 @@
                                 <a class="dropdown-item" href="#"><i class="fa fa-child" aria-hidden="true"></i>
                                     {{ $session['usuario']->nome }}</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="./clients.html">Clientes</a>
+                                <a class="dropdown-item" href="{{ url('/clientes/listar') }}">Clientes</a>
+                                <a class="dropdown-item" href="./purchases.html">Compras</a>
                                 <a class="dropdown-item" href="{{url('/gerente/exibirconsultas')}}">Relatório de compras</a>
                             @endif
 

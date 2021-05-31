@@ -56,7 +56,7 @@ class CartController extends Controller
         $somaCarrinho = self::somaTotalCarrinho($_SESSION['carrinho']);
         $_SESSION['somaCarrinho'] = $somaCarrinho;
 
-        return view('cart.cart', ['carrinho' => $_SESSION['carrinho'], 'somaCarrinho'=> $somaCarrinho]);
+        return view('cart.cart', ['carrinho' => $_SESSION['carrinho'], 'somaCarrinho'=> $somaCarrinho, 'session'=> $_SESSION]);
         // echo "Adicionando ID ".$request->idProduto." -> ".$request->qntProduto." unidades a ".$request->valorProduto;
 
     }

@@ -1,67 +1,14 @@
-<!doctype html>
-<html lang="pt-br">
+@extends('layout.main')
 
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS / + -->
-    <link rel="stylesheet" href="./css/bootstrap.min.css">
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./css/client.css">
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="./img/favicon.ico" type="image/x-icon">
-    <title>Mercadinho Compra Certa - Home</title>
-</head>
+@section('linkcss')
+  <link rel="stylesheet" href="{{ asset('/css/client.css') }}">
+@endsection
 
-<body>
-    <!-- NAVBAR -->
-    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light font-kalam font-weight-bold">
-        <a class="navbar-brand" href="#">
-            <img src="./img/CompraCertaLogoMini.png" class="logo" alt="">
-        </a>
-        <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <!-- Navcenter -->
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
-                <ul class="navbar-nav nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="./index.html">Página inicial</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Produtos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Fale conosco</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- NavRight -->
-            <div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
-                <ul class="navbar-nav nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="./cart.html"><i class="fa fa-shopping-cart"
-                                aria-hidden="true"></i></a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fa fa-user-circle" aria-hidden="true"></i>
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="./login.html">Entrar</a>
-                            <a class="dropdown-item" href="./cadastre-se.html">Cadastre-se</a>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+@section('title', 'Editar Cliente')
+
+
+@section('content')
 
     <div class="container">
         <div class="cart-product-container">
@@ -69,7 +16,7 @@
                 <div class="col-md-12">
                     <div class="box-payment">
                         <div class="d-flex justify-content-center px-2 font-kalam">
-                            <h4 class="font-weight-bold primary-blue-text text-center"><i class="fa fa-user" aria-hidden="true"></i> Cliente - João Cordeiro dos Santos </h4>
+                            <h4 class="font-weight-bold primary-blue-text text-center"><i class="fa fa-user" aria-hidden="true"></i> Cliente - {{$cliente->nome}} </h4>
                         </div>
                         <hr>
                         <div class="card">
@@ -81,23 +28,26 @@
                                 <h5 class="text-center font-kalam font-weight-bold">DADOS PESSOAIS</h5>
                                 <div class="row">
                                     <div class="col-12">
-                                        <form>
+                                        <form method="POST">
+                                            @csrf
+                                            <input type="hidden" name="idUsuario" value="{{ $cliente->id_usuario }}">
+                                            <input type="hidden" name="idEnderecoPadrao" value="{{ $enderecoPadrao->id_endereco_usuario }}">
                                             <div class="input-group mb-3">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text" id="basic-addon1">
                                                         <i class="fa fa-user" aria-hidden="true"></i>
                                                     </span>
                                                 </div>
-                                                <input type="text" class="form-control font-kalam" placeholder="Nome" required value="João Cordeiro dos Santos">
+                                                <input type="text" name="nome" class="form-control font-kalam" placeholder="Nome" required value="{{$cliente->nome}}">
                                             </div>
-                    
+
                                             <div class="input-group mb-3">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text" id="basic-addon1">
                                                         <i class="fa fa-envelope" aria-hidden="true"></i>
                                                     </span>
                                                 </div>
-                                                <input type="email" class="form-control font-kalam" placeholder="E-mail" required value="joaozinho@gmail.com">
+                                                <input type="email" name="email" class="form-control font-kalam" placeholder="E-mail" required value="{{$cliente->email}}">
                                             </div>
                                             <div class="input-group mb-3">
                                                 <div class="input-group-prepend">
@@ -105,7 +55,7 @@
                                                         <i class="fa fa-hashtag" aria-hidden="true"></i>
                                                     </span>
                                                 </div>
-                                                <input type="text" class="form-control font-kalam" placeholder="CPF" maxlength="14" value="093.232.032-32" required>
+                                                <input type="text" name="cpf" class="form-control font-kalam" placeholder="CPF" maxlength="14" value="{{$cliente->cpf}}" required>
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-6">
@@ -129,7 +79,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                    
+
                                             <!-- ENDEREÇO -->
                                             <h5 class="text-center font-kalam font-weight-bold mt-3">ENDEREÇO</h5>
                                             <div class="row">
@@ -140,7 +90,7 @@
                                                                 <i class="fa fa-building" aria-hidden="true"></i>
                                                             </span>
                                                         </div>
-                                                        <input type="text" class="form-control font-kalam" placeholder="Cidade" value="Salvador" required>
+                                                        <input type="text" name="cidade" class="form-control font-kalam" placeholder="Cidade" value="{{ $enderecoPadrao->cidade }}" required>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4 pl-md-0">
@@ -150,7 +100,7 @@
                                                                 <i class="fa fa-map" aria-hidden="true"></i>
                                                             </span>
                                                         </div>
-                                                        <input type="text" class="form-control font-kalam" placeholder="Bairro" value="Pituba" required>
+                                                        <input type="text" name="bairro" class="form-control font-kalam" placeholder="Bairro" value="{{ $enderecoPadrao->bairro }}" required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -162,7 +112,7 @@
                                                                 <i class="fa fa-asterisk" aria-hidden="true"></i>
                                                             </span>
                                                         </div>
-                                                        <input type="tel" class="form-control font-kalam" placeholder="CEP" value="41323-090" required>
+                                                        <input type="tel" name="cep" class="form-control font-kalam" placeholder="CEP" value="{{ $enderecoPadrao->cep }}" required>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-8 pl-md-0">
@@ -172,7 +122,7 @@
                                                                 <i class="fa fa-map-marker" aria-hidden="true"></i>
                                                             </span>
                                                         </div>
-                                                        <input type="text" class="form-control font-kalam" placeholder="Rua" value="Alameda Artur Gonzales" required>
+                                                        <input type="text" name="rua" class="form-control font-kalam" placeholder="Rua" value="{{ $enderecoPadrao->rua }}" required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -184,7 +134,7 @@
                                                                 <i class="fa fa-home" aria-hidden="true"></i>
                                                             </span>
                                                         </div>
-                                                        <input type="number" class="form-control font-kalam" placeholder="Número" value="432" required>
+                                                        <input type="number" name="numero" class="form-control font-kalam" placeholder="Número" value="{{ $enderecoPadrao->numero }}" required>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-8 pl-md-0">
@@ -194,7 +144,7 @@
                                                                 <i class="fa fa-location-arrow" aria-hidden="true"></i>
                                                             </span>
                                                         </div>
-                                                        <input type="text" class="form-control font-kalam" placeholder="Ponto de referência" value="Ao lado do Shopping da Vida" required>
+                                                        <input type="text" name="pontoDeReferencia" class="form-control font-kalam" placeholder="Ponto de referência" value="{{ $enderecoPadrao->ponto_de_referencia }}" required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -202,18 +152,23 @@
                                                 <div class="col-12 d-flex justify-content-between">
                                                     <div>
                                                         <button type="submit" class="btn btn-sm btn-info font-weight-bold"><i class="fa fa-save" aria-hidden="true"></i> Salvar</button>
-                                                        <a href="#" onclick="return confirm('Deseja realmente remover o cliente do sistema?')" class="btn btn-sm btn-danger font-weight-bold" style="font-size: 0.9em;">
+                                                        <a href="{{url('clientes/delete/'.$cliente->id_usuario)}}" onclick="return confirm('Deseja realmente remover o cliente do sistema?')" class="btn btn-sm btn-danger font-weight-bold" style="font-size: 0.9em;">
                                                             <i class="fa fa-trash" aria-hidden="true"></i>
                                                             Remover
                                                         </a>
                                                     </div>
                                                     <div>
-                                                        <a href="#" onclick="window.history.back()" class="btn btn-sm btn-default font-weight-bold" style="font-size: 0.9em;">
+                                                        <a href="/clientes/listar" onclick="window.history.back()" class="btn btn-sm btn-default font-weight-bold" style="font-size: 0.9em;">
                                                             Voltar
                                                         </a>
                                                     </div>
                                                 </div>
                                             </div>
+                                            @if(isset($mensagemSucesso))
+                                                <div class="alert bg-success text-white text-center mt-2">
+                                                    {{ $mensagemSucesso }}
+                                                </div>
+                                            @endif
                                         </form>
                                     </div>
                                 </div>
@@ -230,7 +185,9 @@
         </div>
     </div>
 
+@endsection
 
+{{--
 
     <footer class="mt-2">
         <img src="./img/CompraCertaLogoMini.png" alt="">
@@ -275,4 +232,4 @@
 
 </body>
 
-</html>
+</html> --}}
