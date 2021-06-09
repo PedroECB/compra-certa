@@ -20,7 +20,7 @@ class ClienteController extends Controller
 
         $clientes = DB::table('usuario')->where('perfil_id_perfil', '=', 5)->get();
 
-        // dd($clientes);
+        // dd($_SESSION);
 
 
         return view('cliente.clients', ['session' => $_SESSION, 'clientes' => $clientes]);

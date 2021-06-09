@@ -6,6 +6,8 @@ use App\Http\Controllers\GerenteController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ComprasController;
+
 
 
 /*
@@ -66,7 +68,11 @@ Route::get('/cart/limparCarrinho', [CartController::class, 'limparCarrinho']);
 
 Route::get('/cart/removerProduto/{id}', [CartController::class, 'removerProduto']);
 
+Route::get('/cart/checkout', [CartController::class, 'checkout']);
 
+Route::post('/cart/checkout', [CartController::class, 'postCheckout']);
+
+Route::get('/cart/finalizacao-compra', [CartController::class, 'finalizacaoCompra']);
 
 //Gerente
 
@@ -85,6 +91,19 @@ Route::get('/clientes/edit/{id}', [ClienteController::class, 'edit']);
 Route::post('/clientes/edit/{id}', [ClienteController::class, 'saveEdit']);
 
 Route::get('/clientes/delete/{id}', [ClienteController::class, 'delete']);
+
+Route::get('/clientes/minhas-compras', [ComprasController::class, 'listarComprasCliente']);
+
+Route::get('/clientes/minhas-compras/{id}', [ComprasController::class, 'visualizarCompra']);
+
+Route::get('/clientes/avaliar-compra/{id}', [ComprasController::class, 'avaliarCompra']);
+
+Route::post('/clientes/avaliar-compra/{id}', [ComprasController::class, 'postAvaliacaoCompra']);
+
+
+//Compras
+
+Route::get('/compras/listar', [ComprasController::class, 'listar']);
 
 
 

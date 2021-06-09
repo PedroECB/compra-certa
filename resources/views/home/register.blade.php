@@ -25,7 +25,7 @@
                     <a href="./index.html">
                         <img src="./img/CompraCertaLogoMini.png" alt="">
                     </a>
-                    <a href="./login.html" style="text-decoration: none;">
+                    <a href="#" onclick="window.history.back()" style="text-decoration: none;">
                         <i class="fa fa-chevron-circle-left arrow-back" aria-hidden="true"></i>
                     </a>
                 </div>

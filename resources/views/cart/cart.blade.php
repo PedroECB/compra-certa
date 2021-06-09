@@ -131,11 +131,11 @@
                                 </div>
                                 <div class="d-flex justify-content-between mt-4">
 
-                                    <button type="submit" class="btn btn-block font-weight-bold text-white" style="height: 50px; font-size: 0.9em; background-color: #149459;">
+                                    <a href="{{url('/cart/checkout')}}" class="btn btn-block font-weight-bold text-white" style="height: 50px; font-size: 0.9em; background-color: #149459; display: flex; justify-content: center; align-items: center;">
                                         <i class="fa fa-credit-card-alt" aria-hidden="true"></i>
-                                        AVANÇAR
+                                        &nbsp;AVANÇAR&nbsp;
                                         <i class="fa fa-arrow-right" aria-hidden="true"></i>
-                                    </button>
+                                    </a>
                                 </div>
                             </form>
                         </div>

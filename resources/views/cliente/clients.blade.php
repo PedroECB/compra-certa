@@ -70,7 +70,7 @@
 
                                 <div class="row mt-2">
                                     <div class="col-12 d-flex justify-content-between">
-                                        <div>
+                                        {{-- <div>
                                             <a href="./client-create.html"
                                                 class="btn btn-info btn-sm font-weight-bold bg-dark-blue"><i
                                                     class="fa fa-plus"></i> Adicionar Cliente</a>
@@ -78,7 +78,7 @@
                                         <div>
                                             <button class="btn btn-sm btn-link font-weight-bold"
                                                 onclick="window.history.back()"> Voltar</button>
-                                        </div>
+                                        </div> --}}
 
 
                                     </div>

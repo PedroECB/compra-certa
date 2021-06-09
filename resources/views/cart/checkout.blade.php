@@ -1,71 +1,23 @@
-<!doctype html>
-<html lang="pt-br">
 
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    @extends('layout.main')
 
-    <!-- Bootstrap CSS / + -->
-    <link rel="stylesheet" href="./css/bootstrap.min.css">
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./css/checkout.css">
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="./img/favicon.ico" type="image/x-icon">
-    <title>Mercadinho Compra Certa - Home</title>
-</head>
 
-<body>
-    <!-- NAVBAR -->
-    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light font-kalam font-weight-bold">
-        <a class="navbar-brand" href="#">
-            <img src="./img/CompraCertaLogoMini.png" class="logo" alt="">
-        </a>
-        <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <!-- Navcenter -->
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
-                <ul class="navbar-nav nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="./index.html">Página inicial</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Produtos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Fale conosco</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- NavRight -->
-            <div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
-                <ul class="navbar-nav nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="./cart.html"><i class="fa fa-shopping-cart"
-                                aria-hidden="true"></i></a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fa fa-user-circle" aria-hidden="true"></i>
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="./login.html">Entrar</a>
-                            <a class="dropdown-item" href="./cadastre-se.html">Cadastre-se</a>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    @section('linkcss')
+
+      <link rel="stylesheet" href="{{ asset('/css/checkout.css') }}">
+
+    @endsection
+
+    @section('title', 'Carrinho')
+
+    @section('content')
+
 
     <div class="container">
         <div class="cart-product-container">
-            <form onsubmit="submitForm(this)">
+            <form onsubmit="submitForm(this)" method="POST">
+            @csrf
+            <input type="hidden" name="idEnderecoPadrao" value="{{$enderecoPadrao->id_endereco_usuario}}">
             <div class="row">
                 <div class="col-md-8">
                     <div class="box-payment">
@@ -76,7 +28,7 @@
                         <hr>
                         <div class="card">
                             <div class="card-header d-flex justify-content-center">
-                                <img src="./img/forma-de-pagamento-grande.png" class="" alt="">
+                                <img src="{{ asset('img/flags-card-credit.svg/') }}" class="" alt="">
                             </div>
                             <div class="card-body">
                                 <div class="row">
@@ -87,7 +39,7 @@
                                                     <i class="fa fa-credit-card-alt" aria-hidden="true"></i>
                                                 </span>
                                             </div>
-                                            <input type="text" class="form-control font-kalam" name="numCartao"
+                                            <input type="text" class="form-control font-kalam" name="numCartao" maxlength="19"
                                                 placeholder="Número do cartão" required>
                                         </div>
                                     </div>
@@ -98,7 +50,7 @@
                                                     <i class="fa fa-lock" aria-hidden="true"></i>
                                                 </span>
                                             </div>
-                                            <input type="text" class="form-control font-kalam" placeholder="CVV" name="cvv"
+                                            <input type="text" class="form-control font-kalam" maxlength="3" placeholder="CVV" name="cvvCartao"
                                                 required>
                                         </div>
                                     </div>
@@ -111,13 +63,13 @@
                                                     <i class="fa fa-address-card" aria-hidden="true"></i>
                                                 </span>
                                             </div>
-                                            <input type="text" class="form-control font-kalam" name="nomeCartao"
+                                            <input type="text" class="form-control font-kalam" maxlength="50" name="nomeCartao"
                                                 placeholder="Nome no cartão" required>
                                         </div>
                                     </div>
                                     <div class="col-md-3">
-                                        <select name="mes" id="mes" class="form-control font-kalam" required>
-                                            <option value="" disabled selected>Mês</option>
+                                        <select name="mesCartao" id="mes" class="form-control font-kalam" required>
+                                            <option value="" disabled selected>Val/Mês</option>
                                             <option value="01">01</option>
                                             <option value="02">02</option>
                                             <option value="03">03</option>
@@ -133,18 +85,18 @@
                                         </select>
                                     </div>
                                     <div class="col-md-3">
-                                        <select name="ano" id="ano" class="form-control font-kalam" required>
-                                            <option value="" disabled selected>Ano</option>
-                                            <option value="01">2021</option>
-                                            <option value="02">2022</option>
-                                            <option value="02">2023</option>
-                                            <option value="02">2024</option>
-                                            <option value="02">2025</option>
-                                            <option value="02">2026</option>
-                                            <option value="02">2027</option>
-                                            <option value="02">2028</option>
-                                            <option value="02">2029</option>
-                                            <option value="02">2030</option>
+                                        <select name="anoCartao" id="ano" class="form-control font-kalam" required>
+                                            <option value="" disabled selected>Val/Ano</option>
+                                            <option value="2021">2021</option>
+                                            <option value="2022">2022</option>
+                                            <option value="2023">2023</option>
+                                            <option value="2024">2024</option>
+                                            <option value="2025">2025</option>
+                                            <option value="2026">2026</option>
+                                            <option value="2027">2027</option>
+                                            <option value="2028">2028</option>
+                                            <option value="2029">2029</option>
+                                            <option value="2030">2030</option>
                                         </select>
                                     </div>
                                 </div>
@@ -159,10 +111,10 @@
                                             </div>
                                             <select name="parcela" id="Parcelas" class="form-control font-kalam" required>
                                                 <option value="" disabled selected>Parcelas</option>
-                                                <option value="1">1x - 44,98 </option>
-                                                <option value="2">2x - 22,49 </option>
-                                                <option value="3">3x - 15,00 </option>
-                                                <option value="4">4x - 11,25</option>
+                                                <option value="1">1x - {{ number_format($somaCarrinho, 2, ',', '.') }} </option>
+                                                <option value="2">2x - {{ number_format(($somaCarrinho/2), 2, ',', '.') }} </option>
+                                                <option value="3">3x - {{ number_format(($somaCarrinho/3), 2, ',', '.') }} </option>
+                                                <option value="4">4x - {{ number_format(($somaCarrinho/4), 2, ',', '.') }} </option>
                                             </select>
                                         </div>
 
@@ -202,8 +154,9 @@
                                 <div class="row" id="enderecoPadrao">
                                     <div class="col-12">
                                         <div class="card px-3 py-1 font-kalam mb-3">
-                                            <span>Rua Vinicius de Morais, Nº 588, Pituba, Salvador, 41232-098.</span>
-                                            <span class="blockquote-footer">Ao lado do mercadinho Pouca Telha</span>
+
+                                            <span>{{ $enderecoPadrao->rua }}, Nº {{$enderecoPadrao->numero}}, {{$enderecoPadrao->bairro}}, {{$enderecoPadrao->cidade}}, {{$enderecoPadrao->cep}}</span>
+                                            <span class="blockquote-footer">{{ $enderecoPadrao->ponto_de_referencia }}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -216,8 +169,7 @@
                                                         <i class="fa fa-building" aria-hidden="true"></i>
                                                     </span>
                                                 </div>
-                                                <input type="text" class="form-control font-kalam" placeholder="Cidade" name="cidadeNovoEndereco"
-                                                    required>
+                                                <input type="text" class="form-control font-kalam" placeholder="Cidade" name="cidadeNovoEndereco">
                                             </div>
                                         </div>
                                         <div class="col-md-4 pl-md-0">
@@ -227,8 +179,7 @@
                                                         <i class="fa fa-map" aria-hidden="true"></i>
                                                     </span>
                                                 </div>
-                                                <input type="text" class="form-control font-kalam" placeholder="Bairro" name="bairroNovoEndereco"
-                                                    required>
+                                                <input type="text" class="form-control font-kalam" placeholder="Bairro" name="bairroNovoEndereco">
                                             </div>
                                         </div>
                                     </div>
@@ -240,8 +191,7 @@
                                                         <i class="fa fa-asterisk" aria-hidden="true"></i>
                                                     </span>
                                                 </div>
-                                                <input type="tel" class="form-control font-kalam" placeholder="CEP" name="cepNovoEndereco"
-                                                    required>
+                                                <input type="tel" class="form-control font-kalam" placeholder="CEP" name="cepNovoEndereco">
                                             </div>
                                         </div>
                                         <div class="col-md-8 pl-md-0">
@@ -251,8 +201,7 @@
                                                         <i class="fa fa-map-marker" aria-hidden="true"></i>
                                                     </span>
                                                 </div>
-                                                <input type="text" class="form-control font-kalam" placeholder="Rua" name="ruaNovoEndereco"
-                                                    required>
+                                                <input type="text" class="form-control font-kalam" placeholder="Rua" name="ruaNovoEndereco">
                                             </div>
                                         </div>
                                     </div>
@@ -265,7 +214,7 @@
                                                     </span>
                                                 </div>
                                                 <input type="number" class="form-control font-kalam" name="numeroNovoEndereco"
-                                                    placeholder="Número" required>
+                                                    placeholder="Número">
                                             </div>
                                         </div>
                                         <div class="col-md-8 pl-md-0">
@@ -276,7 +225,7 @@
                                                     </span>
                                                 </div>
                                                 <input type="text" class="form-control font-kalam" name="pontoReferenciaNovoEndereco"
-                                                    placeholder="Ponto de referência" required>
+                                                    placeholder="Ponto de referência">
                                             </div>
                                         </div>
                                     </div>
@@ -304,7 +253,7 @@
                             <div class="d-flex justify-content-between">
                                 <span style="font-size: 1.3em;">Itens</span>
                                 <span class="font-weight-bold" style="font-size: 1.3em;">
-                                    R$ 44,98
+                                    R$ {{ number_format($somaCarrinho, 2, ',', '.') }}
                                 </span>
                             </div>
                             <div class="d-flex justify-content-between">
@@ -316,15 +265,15 @@
                             <div class="d-flex justify-content-between mt-4">
                                 <span style="font-size: 1.3em;">Total </span>
                                 <span class="font-weight-bold" style="font-size: 1.6em;">
-                                    R$ 44,98
+                                    R$ {{ number_format($somaCarrinho, 2, ',', '.') }}
                                 </span>
                             </div>
                             <div class="d-flex justify-content-between mt-4">
-                                <button class="btn btn-block bg-danger font-weight-bold text-white"
+                                {{-- <button class="btn btn-block bg-danger font-weight-bold text-white"
                                     style="height: 50px; font-size: 0.9em;">
                                     <i class="fa fa-close" aria-hidden="true"></i>
                                     CANCELAR COMPRA
-                                </button>
+                                </button> --}}
                             </div>
                         </div>
 
@@ -332,23 +281,8 @@
                 </div>
             </div>
         </div>
-
-        </form>
+    </form>
     </div>
-
-
-
-    <footer class="mt-2">
-        <img src="./img/CompraCertaLogoMini.png" alt="">
-        <span class="d-block">Mercadinho CompraCerta - Todos os direitos reservados <i class="fa fa-copyright"
-                aria-hidden="true"></i></span>
-    </footer>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
-    <script src="./js/bootstrap.bundle.min.js"></script>
-    <script src="https://use.fontawesome.com/884b02690d.js"></script>
-
     <script>
 
         var divNovoEndereco = document.getElementById('novoEndereco')
@@ -373,12 +307,5 @@
         }
 
     </script>
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
 
-    <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script> -->
-
-</body>
-
-</html>
+@endsection
