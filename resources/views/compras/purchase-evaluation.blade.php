@@ -7,7 +7,7 @@
 
 @endsection
 
-@section('title', 'Minhas compras')
+@section('title', 'Avaliar compra')
 
 @section('content')
 

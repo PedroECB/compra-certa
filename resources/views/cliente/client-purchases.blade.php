@@ -1,16 +1,15 @@
+@extends('layout.main')
 
-    @extends('layout.main')
 
+@section('linkcss')
 
-    @section('linkcss')
+    <link rel="stylesheet" href="{{ asset('css/client-purchases.css') }}">
 
-      <link rel="stylesheet" href="{{ asset('css/client-purchases.css') }}">
+@endsection
 
-    @endsection
+@section('title', 'Minhas compras')
 
-    @section('title', 'Minhas compras')
-
-    @section('content')
+@section('content')
 
 
     <div class="container">
@@ -19,7 +18,8 @@
                 <div class="col-md-12">
                     <div class="box-payment">
                         <div class="d-flex justify-content-center px-2 font-kalam">
-                            <h4 class="font-weight-bold primary-blue-text text-center"><i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                            <h4 class="font-weight-bold primary-blue-text text-center"><i class="fa fa-shopping-cart"
+                                    aria-hidden="true"></i>
                                 Minhas compras</h4>
                         </div>
                         <hr>
@@ -41,17 +41,39 @@
                                     </thead>
                                     <tbody class="font-kalam">
 
-                                        @foreach($compras as $compra)
-                                        <tr>
-                                            <td>{{ date_format(new DateTime($compra->hora_compra),'d/m/y') }}</td>
-                                            <td>{{$compra->qntItens}}</td>
-                                            <td class="green-price" style="font-size: 1em;">R$ {{ number_format($compra->total, 2, ',', '.') }}</td>
-                                            <td>{{$compra->descricao_status}}</td>
-                                            <td><a href="{{url('/clientes/minhas-compras/'.$compra->id_compra)}}" class="btn btn-link btn-sm">Visualizar</a></td>
-                                        </tr>
+                                        @foreach ($compras as $compra)
+                                            <tr>
+                                                <td>{{ date_format(new DateTime($compra->hora_compra), 'd/m/y') }}</td>
+                                                <td>{{ $compra->qntItens }}</td>
+                                                <td class="green-price" style="font-size: 1em;">R$
+                                                    {{ number_format($compra->total, 2, ',', '.') }}</td>
+                                                <td>
+                                                    @if ($compra->id_status == 1)
+                                                        <i class="fa fa-dropbox" aria-hidden="true"></i>
+                                                        {{ $compra->descricao_status }}
+                                                    @endif
+
+                                                    @if ($compra->id_status == 2)
+                                                        <i class="fa fa-gift" aria-hidden="true"></i>
+                                                        {{ $compra->descricao_status }}
+                                                    @endif
+
+                                                    @if ($compra->id_status == 3)
+                                                        <i class="fa fa-truck" aria-hidden="true"></i>
+                                                        Em trânsito
+                                                    @endif
+
+                                                    @if ($compra->id_status == 4)
+                                                        <i class="fa fa-check" aria-hidden="true"></i>
+                                                        {{ $compra->descricao_status }}
+                                                    @endif
+                                                </td>
+                                                <td><a href="{{ url('/clientes/minhas-compras/' . $compra->id_compra) }}"
+                                                        class="btn btn-link btn-sm">Visualizar</a></td>
+                                            </tr>
                                         @endforeach
 
-                                        @if(count($compras == 0))
+                                        @if (count($compras) == 0)
                                             <tr>
                                                 <td colspan="5">
                                                     <h3 class="text-center">Nenhuma compra realizada</h3>
@@ -84,7 +106,8 @@
 
                                         </div>
                                         <div>
-                                            <button class="btn btn-sm btn-link font-weight-bold" onclick="window.history.back()"> Voltar</button>
+                                            <button class="btn btn-sm btn-link font-weight-bold"
+                                                onclick="window.history.back()"> Voltar</button>
                                         </div>
 
 

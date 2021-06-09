@@ -94,7 +94,7 @@ Route::get('/clientes/delete/{id}', [ClienteController::class, 'delete']);
 
 Route::get('/clientes/minhas-compras', [ComprasController::class, 'listarComprasCliente']);
 
-Route::get('/clientes/minhas-compras/{id}', [ComprasController::class, 'visualizarCompra']);
+Route::get('/clientes/minhas-compras/{id}', [ComprasController::class, 'visualizarCompraCliente']);
 
 Route::get('/clientes/avaliar-compra/{id}', [ComprasController::class, 'avaliarCompra']);
 
@@ -104,6 +104,18 @@ Route::post('/clientes/avaliar-compra/{id}', [ComprasController::class, 'postAva
 //Compras
 
 Route::get('/compras/listar', [ComprasController::class, 'listar']);
+
+Route::get('/compras/visualizar/{id}', [ComprasController::class, 'visualizarCompra']);
+
+Route::get('/compras/enviar-para-conferencia/{id}', [ComprasController::class, 'enviarParaConferencia']);
+
+Route::get('/compras/enviar-para-entrega/{id}', [ComprasController::class, 'enviarParaEntrega']);
+
+Route::get('/compras/enviar-para-preparacao/{id}', [ComprasController::class, 'enviarParaPreparacao']);
+
+Route::get('/compras/entregar/{id}', [ComprasController::class, 'entregar']);
+
+
 
 
 

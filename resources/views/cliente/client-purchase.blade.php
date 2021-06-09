@@ -46,9 +46,9 @@
                                             <li class="list-group-item" style="font-size: 0.9em; color: gray;">{{ $compra->ponto_de_referencia }} </li>
 
                                             @if($compra->avaliacao_compra_id_avaliacao_compra != null)
-                                            <li class="list-group-item header">Avaliação</li>
-                                            <li class="list-group-item">Experiência - {{ $compra->descricao_parecer }} </li>
-                                            <li class="list-group-item">Comentário - {{ $compra->comentario }} </li>
+                                                <li class="list-group-item header">Avaliação</li>
+                                                <li class="list-group-item">Experiência - {{ $compra->descricao_parecer }} </li>
+                                                <li class="list-group-item">Comentário - {{ $compra->comentario }} </li>
                                             @endif
 
                                         </ul>

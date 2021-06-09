@@ -22,7 +22,7 @@
                                 Relatório de compras</h4>
                         </div>
                         <hr>
-                        <div class="card">
+                        {{-- <div class="card">
                             <div class="card-header d-flex justify-content-center">
                                 <h5 class="font-kalam font-weight-bold">
                                     Lista de Compras Ativas</h3>
@@ -80,7 +80,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
 
                         <!-- Indicadores -->
                         <div class="card mt-2">

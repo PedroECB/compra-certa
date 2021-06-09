@@ -63,10 +63,10 @@
                             {{-- ROTAS DO GERENTE --}}
                             @if (isset($session['usuario']) && $session['usuario']->nvlAcesso == 1)
                                 <a class="dropdown-item" href="#"><i class="fa fa-child" aria-hidden="true"></i>
-                                    {{ $session['usuario']->nome }}</a>
+                                    {{ $session['usuario']->nome }} | {{$session['usuario']->descricao_perfil}}</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="{{ url('/clientes/listar') }}">Clientes</a>
-                                <a class="dropdown-item" href="{{url('/compras/listar')}}">Compras</a>
+                                <a class="dropdown-item" href="{{url('/compras/listar')}}">Fila de compras</a>
                                 <a class="dropdown-item" href="{{url('/gerente/exibirconsultas')}}">Relatório de compras</a>
                             @endif
 
@@ -76,13 +76,13 @@
                                     {{ $session['usuario']->nome }} | {{$session['usuario']->descricao_perfil}}</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="{{ url('/clientes/listar') }}">Clientes</a>
-                                <a class="dropdown-item" href="{{url('/compras/listar')}}">Compras</a>
-                        @endif
+                                <a class="dropdown-item" href="{{url('/compras/listar')}}">Fila de compras</a>
+                            @endif
 
                             {{-- ROTAS DO USUÁRIO --}}
                             @if (isset($session['usuario']) && $session['usuario']->nvlAcesso == 3)
                                 <a class="dropdown-item" href="#"><i class="fa fa-child" aria-hidden="true"></i>
-                                    {{ $session['usuario']->nome }}</a>
+                                    {{ $session['usuario']->nome }} | {{$session['usuario']->descricao_perfil}}</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="{{url('/clientes/minhas-compras')}}">Minhas compras</a>
                             @endif

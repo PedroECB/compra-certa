@@ -38,40 +38,42 @@
                                         </tr>
                                     </thead>
                                     <tbody class="font-kalam">
+                                        @foreach($compras as $compra)
                                         <tr>
-                                            <td>#1423</td>
-                                            <td class="font-weight-bold text-primary">
-                                                <i class="fa fa-dropbox" aria-hidden="true"></i>
-                                                Em preparação
-                                            </td>
-                                            <td>2</td>
-                                            <td><a href="./purchase.html" class="btn btn-link btn-sm">Visualizar</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>#1413</td>
+                                            <td>#{{$compra->id_compra}}</td>
+
+                                            @if($compra->id_status == 1)
+                                                <td class="font-weight-bold text-primary"><i class="fa fa-dropbox" aria-hidden="true"></i>Em preparação</td>
+                                            @endif
+
+                                            @if($compra->id_status == 2)
                                             <td class="font-weight-bold text-info"><i class="fa fa-gift" aria-hidden="true"></i>
                                                 Conferência e Embalagem
                                             </td>
-                                            <td>1</td>
-                                            <td><a href="./purchase.html" class="btn btn-link btn-sm">Visualizar</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>#1413</td>
+                                            @endif
+
+                                            @if($compra->id_status == 3)
                                             <td class="font-weight-bold text-dark"><i class="fa fa-truck" aria-hidden="true"></i>
-                                                Em entrega
+                                                Entrega
                                             </td>
-                                            <td>1</td>
-                                            <td><a href="./purchase.html" class="btn btn-link btn-sm">Visualizar</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>#1321</td>
+                                            @endif
+
+                                            @if($compra->id_status == 4)
                                             <td class="font-weight-bold text-success">
                                                 <i class="fa fa-check" aria-hidden="true"></i>
                                                 Finalizada
                                             </td>
-                                            <td>1</td>
-                                            <td><a href="./purchase.html" class="btn btn-link btn-sm">Visualizar</a></td>
+                                            @endif
+                                            <td>{{$compra->qntItens}}</td>
+                                            <td><a href="{{url('/compras/visualizar/'.$compra->id_compra)}}" class="btn btn-link btn-sm">Visualizar</a></td>
                                         </tr>
+                                        @endforeach
+
+                                        @if(count($compras) == 0)
+                                            <td colspan="4">
+                                                <h3 class="text-center"> Nenhuma compra disponível </h3>
+                                            </td>
+                                        @endif
                                     </tbody>
                                 </table>
 
