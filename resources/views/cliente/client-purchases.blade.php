@@ -33,7 +33,7 @@
                                     <thead class="bg-dark-blue text-white font-weight-bold font-kalam">
                                         <tr>
                                             <td>DATA</td>
-                                            <td>QNT ITENS</td>
+                                            <td>QNT PRODUTOS</td>
                                             <td>TOTAL</td>
                                             <td>STATUS</td>
                                             <td></td>

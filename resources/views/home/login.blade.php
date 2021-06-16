@@ -39,7 +39,7 @@
                                     <i class="fa fa-envelope" aria-hidden="true"></i>
                                 </span>
                             </div>
-                            <input type="text" class="form-control font-kalam" name="email" placeholder="E-mail" value="{{ isset($email) ? $email : '' }}" required>
+                            <input type="email" class="form-control font-kalam" name="email" placeholder="E-mail" value="{{ isset($email) ? $email : '' }}" required>
                         </div>
 
 

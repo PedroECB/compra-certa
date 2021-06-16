@@ -83,7 +83,7 @@
                                         <div>
                                             <a href="{{url('/compras/entregar/'.$compra->id_compra)}}" class="btn btn-sm btn-success font-weight-bold" style="font-size: 0.9em;">
                                                 <i class="fa fa-check" aria-hidden="true"></i>
-                                                Entregar
+                                                Confirmar entrega
                                             </a>
                                         </div>
                                         @endif

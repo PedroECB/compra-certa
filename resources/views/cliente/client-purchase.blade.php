@@ -38,7 +38,7 @@
                                             <li class="list-group-item">Cachaça 51 - 1 Und(s) - <span class="green-price" style="font-size: 1em;">R$ 8,90</span> </li> --}}
 
                                             <li class="list-group-item header">Informações adicionais - #{{ $compra->id_compra }}</li>
-                                            <li class="list-group-item">{{count($compra->produtosCompra)}} Itens - Total <span class="green-price" style="font-size: 1em;">R$ {{ number_format($compra->total, 2, ',', '.') }}</span></li>
+                                            <li class="list-group-item">{{count($compra->produtosCompra)}} Produto(s) - Total <span class="green-price" style="font-size: 1em;">R$ {{ number_format($compra->total, 2, ',', '.') }}</span></li>
                                             <li class="list-group-item">Pagamento - Cartão de crédito </li>
                                             <li class="list-group-item font-weight-bold text-primary">Status - {{ $compra->descricao_status }} </li>
                                             <li class="list-group-item header">Endereço de Entrega</li>
